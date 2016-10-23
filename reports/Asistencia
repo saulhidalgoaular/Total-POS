@@ -1,0 +1,6 @@
+Title==Asistencia
+Columns==Codigo,codigo_empleado,String|Nombre,nombre_completo,String|Fecha,fecha,String|Entrada,marcacion1,String|Salida,marcacion2,String|Entrada,marcacion3,String|Salida,marcacion4,String|Marcaciones,marcaciones,String
+Parameters==Fecha Inicial (YYYY-MM-DD),,Date,1|Fecha Final (YYYY-MM-DD),,Date,2|Departamento,,String,3
+ShowNumbers==True
+SQL==select nombre_completo, marcacion.agencia, fecha, marcacion.codigo_empleado , DATE_FORMAT( marcacion1 ,'%r') as marcacion1  , DATE_FORMAT(marcacion2,'%r') as marcacion2 , DATE_FORMAT(marcacion3,'%r') as marcacion3, DATE_FORMAT(marcacion4,'%r') as marcacion4, (count(*)) as marcaciones from asistencia , marcacion, empleado where marcacion.codigo_empleado=asistencia.codigo_empleado and marcacion.codigo_empleado=empleado.codigo and ? <= fecha and fecha <= adddate(?,1) and datediff(fecha, hora) =0 and empleado.departamento like ? group by marcacion.agencia, fecha , marcacion.codigo_empleado order by nombre_completo, fecha
+Vertical==True

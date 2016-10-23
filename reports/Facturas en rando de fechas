@@ -1,0 +1,6 @@
+Title==Facturas en rango de fechas
+Columns==Caja,identificador_pos,String,0,1|Correlativo,codigo_interno,String|Fecha Creacion,fc,String|Nro Fiscal,numero_fiscal,String|Sin Iva,total_sin_iva,bigDecimalType,1|IVA,iva,bigDecimalType|Total,total_con_iva,bigDecimalType,1
+ShowNumbers==True
+Parameters==Fecha Inicial (YYYY-MM-DD),,Date,1|Fecha Final (YYYY-MM-DD),,Date,2
+SQL==select identificador_pos , codigo_interno , DATE_FORMAT(fecha_creacion,'%d-%m-%y %h:%i') as fc, numero_fiscal , total_sin_iva, iva, total_con_iva from factura where estado = 'Facturada' and ? <= fecha_creacion and fecha_creacion <= adddate(?,1) order by numero_fiscal
+Vertical==False

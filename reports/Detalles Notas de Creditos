@@ -1,0 +1,6 @@
+Title==Detalles de Ventas
+Columns==nota_de_credito,codigo_interno_nota_de_credito,String|Articulo,codigo_de_articulo,String|Precio de Venta,precio_venta,String|Descuento,descuento,String
+ShowNumbers==True
+Parameters==Fecha Inicial (Obligatorio),,Date,1
+SQL==select codigo_interno_nota_de_credito ,codigo_de_articulo , precio_venta , descuento from nota_de_credito_contiene fc , nota_de_credito where fc.codigo_interno_nota_de_credito = nota_de_credito.codigo_interno and datediff(fecha_creacion , ?)=0
+Vertical==True

@@ -1,0 +1,6 @@
+Title==Ventas x Caja
+Columns==Venta Neta,total,String|Caja,identificador_pos,String
+ShowNumbers==True
+Parameters==Fecha Inicial,,Date,1:3|Fecha Final,,Date,2:4
+SQL==select round(sum(total)*1.12,2) as total, identificador_pos from (select codigo_interno,total_sin_iva*(1-descuento_global) as total , identificador_pos from factura where estado='Facturada' and ? <= fecha_creacion and fecha_creacion <= adddate(?,1) union (select codigo_interno , -1*total_sin_iva as total , identificador_pos from nota_de_credito where ? <= fecha_creacion and fecha_creacion <= adddate(?,1))) as myTable group by identificador_pos
+Vertical==True

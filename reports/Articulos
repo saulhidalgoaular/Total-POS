@@ -1,0 +1,6 @@
+Title==Total de Articulos
+Columns==Codigo,codigo,String|Modelo,modelo,String|Descripcion,descripcion,String|Precio Venta,monto,bigDecimalType|Descuento,descuento,bigDecimalType|Precio Neto,monto_con_descuento,bigDecimalType|Existencia Actual,existencia_actual,bigDecimalType,1
+ShowNumbers==True
+Parameters==Codigo,,String,1|Modelo,,String,2|Descripcion,,String,3
+SQL==select distinct * from (select a.modelo,a.codigo, a.descripcion, a.existencia_actual, round(p1.monto*1.12,2) as monto, descuento, round(p1.monto*1.12*(100.0-descuento)/100.0,2) as monto_con_descuento , p1.fecha from precio p1, articulo a where p1.fecha = (select max(p2.fecha) from precio p2 where p1.codigo_de_articulo=p2.codigo_de_articulo) and a.codigo = p1.codigo_de_articulo order by a.existencia_actual desc) as myTable where codigo like concat(concat('%',trim(?)),'%') and modelo like concat(concat('%',trim(?)),'%') and descripcion like concat(concat('%',trim(?)),'%')
+Vertical==True

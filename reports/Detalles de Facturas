@@ -1,0 +1,6 @@
+Title==Detalles de Ventas
+Columns==Factura,codigo_interno_factura,String|Articulo,codigo_de_articulo,String|Precio de Venta,precio_venta,String|Descuento,descuento,String
+ShowNumbers==True
+Parameters==Fecha Inicial (Obligatorio),,Date,1
+SQL==select codigo_interno_factura ,codigo_de_articulo , precio_venta , descuento from factura_contiene fc , factura where fc.codigo_interno_factura = factura.codigo_interno and datediff(fecha_creacion , ?)=0
+Vertical==True

@@ -1,0 +1,5 @@
+Title==Empleados
+Columns==Codigo,codigo,String|Nombre,nombre_completo,String
+ShowNumbers==True
+SQL==select codigo, nombre_completo from empleado
+Vertical==True

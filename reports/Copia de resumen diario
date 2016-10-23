@@ -1,0 +1,5 @@
+Title==Reporte de cierre del dia
+Columns==nombreFormulario,Nombre,tipo|nombreFormulario,Nombre,tipo|nombreFormulario,Nombre,tipo
+ShowNumbers==True
+Parameters==nombreFormulario,nombre,tipo
+SQL==Select * from articulo

@@ -1,0 +1,6 @@
+Title==Art mas vendidos
+Columns==Codigo,codigo_de_articulo,String|Descripcion,descripcion,String|Cantidad,cantidad,bigDecimalType,1
+ShowNumbers==True
+Parameters==Fecha Inicial (YYYY-MM-DD),,Date,1|Fecha Final (YYYY-MM-DD),,Date,2
+SQL==select fc.codigo_de_articulo, a.descripcion, sum(fc.cantidad) as cantidad from factura_contiene fc , factura f , articulo a where a.codigo = fc.codigo_de_articulo and f.codigo_interno = fc.codigo_interno_factura and ? <= fecha_creacion and fecha_creacion <= adddate(?,1) group by fc.codigo_de_articulo order by cantidad desc limit 30
+Vertical==False
